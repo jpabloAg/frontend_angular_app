@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/']">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+<div class="container mt-5" *ngIf="customer">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form>
+                        <div class="form-group  mb-3">
+                            <input type="text" name="name" [value]="customer.name" [(ngModel)]="customer.name" placeholder="Name"
+                                class="form-control" autofocus>
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="text" name="address" [value]="customer.email" [(ngModel)]="customer.email" placeholder="Address"
+                                class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="text" name="phone" [value]="customer.phone" [(ngModel)]="customer.phone" placeholder="Phone"
+                                class="form-control">
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100" (click)="update()">
+                            Actualizar datos
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

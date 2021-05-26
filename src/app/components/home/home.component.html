@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/']">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+<div class="row">
+    <div class="col-md-6" style="margin-top:13%; text-align:center">
+        <h1>Entrar</h1>
+        <p>Abre tu cuenta de ahorros por Internet o recibe tu tarjeta de credito</p>
+        
+        <div class="mb-3">
+            <label for="owner_id" class="form-label">Número de identificación</label>
+            <input type="text" [(ngModel)]="id_owner" class="form-control" id="owner_id" style="width: 300px; margin-left: 185px;">
+        </div>
+        <button type="submit" class="btn" style="background-color:black; color:white" [routerLink]="['/customer',id_owner]">Abrir cuenta</button>
+    
+    </div>
+    <div class="col-md-6">
+        <img src="../../../assets/group.png" alt="">
+    </div>
+</div>
+

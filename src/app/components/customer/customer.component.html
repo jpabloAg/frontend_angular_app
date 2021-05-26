@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/']">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+<div class="jumbotron text-center" style="background-color: #eee; padding-top: 10px;">
+    <h3 class="display-4">Sucurcal virtual</h3>
+    <p class="lead">Verifica tus datos y crea nuevas experiencias con las tarjestas de credito o debito.</p>
+    <hr class="my-4">
+</div>
+<div *ngIf="customer" class="card mb-3" style="max-width: 540px; margin-left: 400px; margin-top: 80px;">
+    <div class="row no-gutters">
+      <div class="col-md-5">
+        <img src="../../../assets/bank.jpg" class="card-img-top" style="height:100%; width:100%;">
+      </div>
+      <div class="col-md-7">
+        <div class="card-body">
+          <strong class="card-title">Nombre: </strong><span>{{ customer.name }}</span> <br>
+          <strong class="card-text">C.C: </strong><span>{{ customer.id }}</span> <br>
+          <strong class="card-text">Email: </strong><span>{{ customer.email }}</span> <br>
+          <strong class="card-text">Phone: </strong><span>{{ customer.phone }}</span> <br>
+          <div *ngIf="customer.credit; then poseecredito else noposeecredito"></div>
+          <div *ngIf="customer.debito; then poseedebito else noposeedebito"></div>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-success w-100" [routerLink]="['/edit_customer', customer.id]">Editar datos personales</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #poseecredito>
+    <p class="card-text"><small class="text-muted">Consulte su tarjeta de credito: <a [routerLink]="['/credit', customer.credit]">{{ customer.credit }}</a></small></p>
+  </ng-template>
+
+  <ng-template #noposeecredito>
+    <p class="card-text"><small class="text-muted"><a [routerLink]="['/create_credit', customer.id]" style="color: #777; text-decoration: none;"> Deseas tener tu tarjeta de credito?</a></small></p>
+  </ng-template>
+
+  <ng-template #poseedebito>
+    <p class="card-text"><small class="text-muted">Consulte su tarjeta de debito: <a [routerLink]="['/credit', customer.debito]">{{ customer.credit }}</a></small></p>
+  </ng-template>
+
+  <ng-template #noposeedebito>
+    <p class="card-text"><small class="text-muted"><a [routerLink]="['/create_credit', customer.id]" style="color: #777; text-decoration: none;">Deseas tener tu tarjeta de debito?</a></small></p>
+  </ng-template>
